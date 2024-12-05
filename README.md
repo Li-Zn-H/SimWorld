@@ -9,7 +9,7 @@ The data set provided in this project contains the following:
 - **File format**: The groundtruth is jpg image, the segmentation mask is png image, the detection label is yolo format txt text, and the natural language description is txt text.
 - **Structure**: The dataset contains the following main files/folders:
 ```
-project/
+dataset/
 │
 ├── AutoMine/                    # real data
 │   ├── target/                  # groundtruth

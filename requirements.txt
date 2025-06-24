@@ -1,0 +1,6 @@
+diffusers==0.27.2
+Pillow==11.2.1
+torch==2.2.2
+torch_ema==0.3
+torchvision==0.17.2
+transformers==4.39.3

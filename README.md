@@ -45,7 +45,7 @@ Please prepare the training data in the format of a ```dataset.json``` file. Eac
   "target": "path/to/target_image.png",
   "prompts": "text description",
   "labels": [
-    ["class", "x", "y", "w", "h"], ...
+    ["class", "x", "y", "w", "h"], ["..."]
   ]
 }
 ```

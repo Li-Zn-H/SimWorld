@@ -22,8 +22,7 @@ dataset/
 │   ├── bounding_boxes/          # 2D detection label
 │   └── prompts/                 # natural language description
 ```
-You can download it from the following Google Drive link: https://drive.google.com/drive/folders/1JdyGvFU4KkpqHht8VVe_fsMOn-UnMj3S?usp=drive_link
-
+You can download the dataset from the following Google Drive link: https://drive.google.com/drive/folders/1JdyGvFU4KkpqHht8VVe_fsMOn-UnMj3S?usp=drive_link
 
 ### 2. Train
 This repository contains two multi-card distributed training scripts, applicable to SimWorld XL and SimWorld fine-tuning, respectively.
@@ -57,6 +56,10 @@ Please prepare the training data in the format of a ```dataset.json``` file. Eac
 
 **Train**
 Before training, please download the corresponding versions of the Stable Diffusion (SD) and ControlNet base models. After preparing these models, you can run the training script.
+
+you can download the checkpoint from the following Google Drive link:
+https://drive.google.com/drive/folders/1ZKDijJ98-vX6IlfAShT7JFs0it1l6LpC?usp=drive_link
+
 
 **Training Script 1**: train_SimWorld.py
 ```bash

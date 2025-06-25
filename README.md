@@ -85,7 +85,7 @@ This script performs inference on a given conditional input image and a text pro
 **Installation**
 It is recommended to install the dependency packages in requirements_inference.txt under a Python 3.12.2 environment.
 ```bash
-pip install -r requirements_train.txt
+pip install -r requirements_inference.txt
 ```
 
 **Run Inference**
@@ -119,6 +119,7 @@ python inference_SimWorldXL.py \
   --cuda_device 3 \
   --output_image ./outputs.png
 ```
+
 ### 4.Cite
 If this project is helpful for your work, please cite the following paper:
 ```bibtex

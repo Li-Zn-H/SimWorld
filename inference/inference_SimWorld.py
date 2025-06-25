@@ -20,7 +20,7 @@ def parse_args():
     parser.add_argument("--source_image", type=str, required=True, help="Path to conditional image (e.g., segmentation map)")
     parser.add_argument("--target_prompt", type=str, required=True, help="Path to text prompt file")
     parser.add_argument("--cuda_device", type=str, default="0", help="CUDA device ID to use")
-    parser.add_argument("--time_steps", type=int, default=50, help="Number of inference timesteps")
+    parser.add_argument("--time_steps", type=int, default=100, help="Number of inference timesteps")
     parser.add_argument("--output_image", type=str, default="output.png", help="Path to save the generated image")
     return parser.parse_args()
 

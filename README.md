@@ -1,5 +1,5 @@
 # SimWorld
-This project contains data sets and code for SimWorld: A Unified Benchmark for Simulator-Conditioned Scene Generation via World Model and is designed to support researchers in related fields. This paper presentsa simulator-conditioned scene generation engine based on world models and providing a benchmark for world model evaluation.
+This project contains data sets and code for SimWorld: A Unified Benchmark for Simulator-Conditioned Scene Generation via World Model and is designed to support researchers in related fields. This paper presents a simulator-conditioned scene generation engine based on world models and providing a benchmark for world model evaluation.
 
 ## Project content
 ### 1. Dataset
@@ -25,17 +25,18 @@ dataset/
 You can download it from the following Google Drive link: https://drive.google.com/drive/folders/1JdyGvFU4KkpqHht8VVe_fsMOn-UnMj3S?usp=drive_link
 
 
-### 2. Code
+### 2. Train
 This repository contains two multi-card distributed training scripts, applicable to SimWorld XL and SimWorld fine-tuning, respectively.
 
 **Environment Dependencies** 
-It is recommended to install the dependency packages in ```requirements.txt``` under a Python 3.12.2 environment.
+It is recommended to install the dependency packages in ```requirements_train.txt``` under a Python 3.12.2 environment.
+
 **Installation**
 ```bash
 conda create -n diffusion python=3.12.2
 conda activate diffusion
 
-pip install -r requirements.txt
+pip install -r requirements_train.txt
 ``` 
 **Data Preparation**
 Please prepare the training data in the format of a ```dataset.json``` file. Each line should represent a single sample and contain the following fields:
@@ -54,22 +55,10 @@ Please prepare the training data in the format of a ```dataset.json``` file. Eac
 - prompts: The text prompt.
 - labels: Object detection bounding boxes (in YOLO format, float type, with normalized center coordinates).
 
-**Training Parameters** 
-The parameters for both scripts are similar, with some being optional.
-|Parameter Name  | Description   | Required   |
-|---------|---------|---------|
-| --sd_path   | Path to the main Stable Diffusion model.   | Yes   |
-| --cn_path   | Path to the ControlNet model.   | Yes   |
-| --vae_path   | Path to the VAE model   | Yes (for XL)   |
-| --dataset_json   | Path to the training data JSON file.   | Yes   |
-| --pretrained_controlnet   | Pre-trained weights for ControlNet (optional).   | No   |
-| --save_directory   | Directory to save the models.   | No   |
-| --log_directory   | Directory for logs and TensorBoard.   | No   |
-| --cuda_devices   | GPU IDs to use (e.g., "0,1,2").   | No (default: 0)   |
-| --port   | Port number for distributed communication.   | No   |
+**Train**
+Before training, please download the corresponding versions of the Stable Diffusion (SD) and ControlNet base models. After preparing these models, you can run the training script.
 
-You need to first download the corresponding versions of the SD (Stable Diffusion) and ControlNet base models. And then run the Training Script.
-**Training Script 1**: train_SimWorldXL.py
+**Training Script 1**: train_SimWorld.py
 ```bash
 python train_SimWorld.py \
   --sd_path "/path/to/stable-diffusion-v1-5" \
@@ -90,7 +79,35 @@ python train_SimWorldXL.py \
   --pretrained_controlnet "/path/to/pretrained_epoch.model" \
   --cuda_devices "0,1,2,3" \
 ```
-**cite**
+### 3.Inference
+This script performs inference on a given conditional input image and a text prompt, using the pre-trained SimWorld models.
+
+**Installation**
+It is recommended to install the dependency packages in requirements_inference.txt under a Python 3.12.2 environment.
+```bash
+pip install -r requirements_train.txt
+```
+
+**Run Inference**
+1. Prepare the following:
+   - **Stable Diffusion model directory** (`--sd_path`), containing tokenizer, text_encoder, unet, scheduler, vae subfolders.
+   - **ControlNet model directory** (`--cn_path`).
+   - **ControlNet trained weights** checkpoint (`--controlnet_ckpt`).
+   - **Conditional input image** (e.g., segmentation mask).
+   - **Text prompt file** (plain text).
+2. Run the inference script with the appropriate arguments:
+```bash
+python inference_SimWorld.py \
+  --sd_path /path/to/stable-diffusion-v1-5 \
+  --cn_path /path/to/controlnet-depth-sdxl-1.0 \
+  --controlnet_ckpt /path/to/pretrained_epoch.model \
+  --source_image /path/to/conditional_image.png \
+  --target_prompt /path/to/prompt.txt \
+  --cuda_device 0 \
+  --time_steps 50 \
+  --output_image output.png
+```
+### 4.Cite
 If this project is helpful for your work, please cite the following paper:
 ```bibtex
 @article{li2025simworld,

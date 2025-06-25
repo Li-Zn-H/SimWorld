@@ -57,7 +57,7 @@ Please prepare the training data in the format of a ```dataset.json``` file. Eac
 **Train**
 Before training, please download the corresponding versions of the Stable Diffusion (SD) and ControlNet base models. After preparing these models, you can run the training script.
 
-you can download the checkpoint from the following Google Drive link:
+You can download the checkpoint from the following Google Drive link:
 https://drive.google.com/drive/folders/1ZKDijJ98-vX6IlfAShT7JFs0it1l6LpC?usp=drive_link
 
 

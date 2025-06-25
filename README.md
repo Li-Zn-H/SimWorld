@@ -107,6 +107,18 @@ python inference_SimWorld.py \
   --time_steps 50 \
   --output_image output.png
 ```
+or
+```bash
+python inference_SimWorldXL.py \
+  --sd_path /path/to/stable-diffusion-xl-base-1.0 \
+  --controlnet_path /path/to/controlnet-depth-sdxl-1.0 \
+  --vae_path /path/to/sdxl-vae-fp16-fix \
+  --controlnet_ckpt /path/to/pretrained_epoch.model \
+  --input_image /path/to/conditional_image.png \
+  --prompt_file /path/to/prompt.txt \
+  --cuda_device 3 \
+  --output_image ./outputs.png
+```
 ### 4.Cite
 If this project is helpful for your work, please cite the following paper:
 ```bibtex
